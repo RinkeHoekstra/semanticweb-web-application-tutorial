@@ -30,7 +30,7 @@
 				<div class='col-lg-7'>
 					<h3>Step 3 <small>Sending information via an AJAX call</small></h3>
 					<p>Click the link to send the message 'Hello World' to the server, and show the output in a <code>&lt;div&gt;</code> element</p>
-					<div><a href="#" id="link3" class='btn btn-primary'>link</a></div>
+					<div><a id="link3" class='btn btn-primary'>link</a></div>
 				</div>
 				<div class='col-lg-5'>
 					<h3>Output</h3>
@@ -47,7 +47,7 @@
 							<input type='text' class='form-control' id='messageInput1' placeholder='Type some nifty message'>
 						</div>
 					</form>
-					<div><a href="#" id="link4" class='btn btn-primary'>link</a></div>
+					<div><a id="link4" class='btn btn-primary'>link</a></div>
 				</div>
 				<div class='col-lg-5'>
 					<h3>Output</h3>
@@ -64,11 +64,84 @@
 							<input type='text' class='form-control' id='messageInput2' placeholder='Type some nifty message'>
 						</div>
 					</form>
-					<div><a href="#" id="link5" class='btn btn-primary'>link</a></div>
+					<div><a id="link5" class='btn btn-primary'>link</a></div>
 				</div>
 				<div class='col-lg-5'>
 					<h3>Output</h3>
 					<div id="linktarget5" class='well'>This is where your message will be copied to.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 6 <small>Third-party Service</small></h3>
+					<p>Start typing to copy the server response to a <code>&lt;div&gt;</code> element</p>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website.</p>
+					<form role='form'>
+						<div class='form-group'>
+							<label for='messageInput3'>Write a message</label>
+							<input type='text' class='form-control' id='messageInput3' placeholder='Type some nifty message'>
+						</div>
+					</form>
+					<!-- <div><a id="link5" class='btn btn-primary'>link</a></div> -->
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget6" class='well' style='scroll: both; overflow: auto; height: 10em;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 7 <small>Parse results</small></h3>
+					<p>Start typing to copy a parsed server response to a <code>&lt;div&gt;</code> element</p>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website.</p>
+					<form role='form'>
+						<div class='form-group'>
+							<label for='messageInput7'>Write a message</label>
+							<input type='text' class='form-control' id='messageInput7' placeholder='Type some nifty message'>
+						</div>
+					</form>
+					<!-- <div><a id="link5" class='btn btn-primary'>link</a></div> -->
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget7" class='well' style='scroll: both; overflow: auto; height: 10em;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 8 <small>Add click handlers</small></h3>
+					<p>Start typing to copy a parsed server response to a <code>&lt;div&gt;</code> element. We add custom handlers for the click events.</p>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website.</p>
+					<form role='form'>
+						<div class='form-group'>
+							<label for='messageInput8'>Write a message</label>
+							<input type='text' class='form-control' id='messageInput8' placeholder='Type some nifty message'>
+						</div>
+					</form>
+					<!-- <div><a id="link5" class='btn btn-primary'>link</a></div> -->
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget8" class='well' style='scroll: both; overflow: auto; height: 10em;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 9 <small>Fire SPARQL DESCRIBE</small></h3>
+					<p>Start typing to copy a parsed server response to a <code>&lt;div&gt;</code> element. The click events now use the URI returned by the autocompletion to fire a SPARQL DESCRIBE query, e.g:</p>
+					<pre class='sparql'>DESCRIBE &lt;http://linkedlifedata.com/resource/umls/id/C0022885&gt;</pre>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website. And fire the SPARQL query to the endpoint at <a href="http://linkedlifedata.com/sparql">http://linkedlifedata.com/sparql</a>. However, the problem is that not all SPARQL endpoints properly handle JSONP/CORS so we wrap it in a server side function <code>{{ url_for('sparql_rdf') }}</code> (that will come in handy later anyway)</p>
+					<form role='form'>
+						<div class='form-group'>
+							<label for='messageInput9'>Write a message</label>
+							<input type='text' class='form-control' id='messageInput9' placeholder='Type some nifty message'>
+						</div>
+					</form>
+					<!-- <div><a id="link5" class='btn btn-primary'>link</a></div> -->
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget9" class='well' style='scroll: both; overflow: auto; height: 10em;'>This is where the server response will appear.</div>
 				</div>
 			</div>
 		</div>
