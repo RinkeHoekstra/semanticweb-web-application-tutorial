@@ -227,8 +227,9 @@ $('#messageInput9').on('input', function(e){
 				
 				var query = 'DESCRIBE <'+uri+'>'
 				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
+				var format = 'RDF';
 				
-				$.get('/sparql/rdf',data={'endpoint': endpoint, 'query': query}, function(json){
+				$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(json){
 					console.log(json);
 					var pre = $('<pre></pre>');
 					pre.text(JSON.stringify(json));
@@ -244,3 +245,200 @@ $('#messageInput9').on('input', function(e){
 		$('#linktarget9').html(ul);
 	});
 });
+
+
+/*
+// ############
+//    STEP 10
+// ############
+*/
+
+
+// Autocompletion from Linked Life Data
+
+// http://linkedlifedata.com/autocomplete.json?
+// Parameters are 'q' for query and some limit.
+// Note that we have to add a 'callback=?' suffix to the URI, to make sure the call is a JSONP request.
+$('#messageInput10').on('input', function(e){
+	var message = $('#messageInput10').val();
+	
+	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
+	
+	var data = {'q': message, 'limit': 100}
+	
+	$.getJSON(lld_autocomplete_url, data=data, function(json){
+		
+		var ul = $('<ul></ul>');
+		ul.addClass('list-group');
+		for (var i in json.results) {
+			var r = json.results[i];
+			
+			var uri = r.uri.namespace + r.uri.localName;
+			var label = r.label;
+			
+			var li = $('<li></li>');
+			li.addClass('list-group-item');
+			var a = $('<a></a>');
+			a.html(label);
+			
+			a.on('click', {'uri': uri}, function(e){
+				var uri = e.data.uri;
+				var query = 'DESCRIBE <'+uri+'>'
+				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
+				var format = 'RDF';
+				
+				$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(data){
+					var pre = $('<pre></pre>');
+					pre.text(data);
+					$('#linktarget10').html(pre);
+					
+					// New, set an identifier on our <pre> tag
+					
+					pre.attr('id','pre10');
+					
+					// New, enable the button, and add a click handler
+					
+					$('#link10').toggleClass('disabled');
+					
+					$('#link10').on('click',function(e){
+						var rdf_data = $('#pre10').text();
+						
+						$.post('/store',data={'data': rdf_data}, function(data){
+							var pre = $('<pre></pre>');
+							pre.text(data);
+							$('#linktarget10').html(pre);
+							$('#link10').toggleClass('disabled');
+						})
+						
+					});
+					
+				});
+				
+			});
+			
+			li.append(a);
+			ul.append(li);
+		}
+		
+		$('#linktarget10').html(ul);
+	});
+});
+
+
+/*
+// ############
+//    STEP 11
+// ############
+*/
+
+
+// Autocompletion from Linked Life Data
+
+// http://linkedlifedata.com/autocomplete.json?
+// Parameters are 'q' for query and some limit.
+// Note that we have to add a 'callback=?' suffix to the URI, to make sure the call is a JSONP request.
+$('#messageInput11').on('input', function(e){
+	var message = $('#messageInput11').val();
+	
+	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
+	
+	var data = {'q': message, 'limit': 100}
+	
+	$.getJSON(lld_autocomplete_url, data=data, function(json){
+		
+		var ul = $('<ul></ul>');
+		ul.addClass('list-group');
+		for (var i in json.results) {
+			var r = json.results[i];
+			
+			var uri = r.uri.namespace + r.uri.localName;
+			var label = r.label;
+			
+			var li = $('<li></li>');
+			li.addClass('list-group-item');
+			var a = $('<a></a>');
+			a.html(label);
+			
+			a.on('click', {'label': label}, function(e){
+				var label = e.data.label;
+				var query = 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nCONSTRUCT {	?s rdfs:label "'+label+'" .\n ?s ?p1 ?o1 . ?o1 ?p2 ?o2 . } WHERE { ?s rdfs:label "'+label+'"@en;\n ?p1 ?o1 .\n ?o1 ?p2 ?o2 .}';
+				var endpoint = 'http://live.dbpedia.org/sparql';
+				var format = 'RDF';
+				
+				$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(data){
+					var pre = $('<pre></pre>');
+					pre.text(data);
+					$('#linktarget11').html(pre);
+					
+					// New, set an identifier on our <pre> tag
+					
+					pre.attr('id','pre11');
+					
+					// New, enable the button, and add a click handler
+					
+					$('#link11').toggleClass('disabled');
+					
+					$('#link11').on('click',function(e){
+						var rdf_data = $('#pre11').text();
+						
+						$.post('/store',data={'data': rdf_data}, function(data){
+							var pre = $('<pre></pre>');
+							pre.text(data);
+							$('#linktarget11').html(pre);
+							$('#link11').toggleClass('disabled');
+						})
+						
+					});
+					
+				});
+				
+			});
+			
+			li.append(a);
+			ul.append(li);
+		}
+		
+		$('#linktarget11').html(ul);
+	});
+});
+
+/*
+// ############
+//    STEP 12
+// ############
+*/
+
+$('#link12').on('click',function(e){
+	var rdf_data = $('#schema').val();
+	
+	$.post('/store',data={'data': rdf_data}, function(data){
+		var pre = $('<pre></pre>');
+		pre.text(data);
+		$('#linktarget12').html(pre);
+	})
+	
+});
+
+
+/*
+// ############
+//    STEP 13
+// ############
+*/
+
+$('#link13').on('click', function(e){
+	
+	var query = $('#query13').text();
+	var endpoint = 'http://localhost:8080/openrdf-sesame/repositories/tutorial';
+	var format = 'JSON';
+	
+	$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(json){
+		console.log(json);
+		var pre = $('<pre></pre>');
+		pre.text(JSON.stringify(json));
+		$('#linktarget13').html(pre);
+	});
+	
+});
+
+

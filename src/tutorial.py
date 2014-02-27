@@ -1,9 +1,14 @@
 from flask import Flask, render_template, url_for, request, jsonify
 from SPARQLWrapper import SPARQLWrapper, RDF, JSON
+import requests
 import json
 
 
 app = Flask(__name__)
+
+
+TUTORIAL_REPOSITORY = 'http://localhost:8080/openrdf-sesame/repositories/tutorial'
+
 
 @app.route('/')
 def first_page():
@@ -21,8 +26,8 @@ def show_message():
     return render_template('message.html', message=message)
     
 @app.route('/sparql', methods=['GET'])
-def sparql_rdf():
-    app.logger.debug('You arrived at ' + url_for('sparql_rdf'))
+def sparql():
+    app.logger.debug('You arrived at ' + url_for('sparql'))
     app.logger.debug('I received the following arguments' + str(request.args) )
     
     endpoint = request.args.get('endpoint', None)
@@ -40,7 +45,9 @@ def sparql_rdf():
             sparql.setReturnFormat(RDF)
         else :
             sparql.setReturnFormat('JSON')
+            sparql.addCustomParameter('Accept','application/sparql-results+json')
         
+        app.logger.debug('Query:\n{}'.format(query))
         
         app.logger.debug('Querying endpoint {}'.format(endpoint))
         
@@ -52,15 +59,37 @@ def sparql_rdf():
             app.logger.debug(response)
             
             if return_format == 'RDF':
+                app.logger.debug('Serializing to Turtle format')
                 return response.serialize(format='turtle')
             else :
-                return response
-        except :
+                app.logger.debug('Directly returning JSON format')
+                return jsonify(response)
+        except Exception as e:
+            app.logger.error('Something went wrong')
+            app.logger.error(e)
             return jsonify({'result': 'Error'})
             
         
     else :
         return jsonify({'result': 'Error'})
+        
+@app.route('/store', methods=['POST'])
+def store():
+    app.logger.debug('You arrived at ' + url_for('store'))
+    app.logger.debug('I received the following arguments' + str(request.form) )   
+    
+    data = request.form['data'].encode('utf-8')
+    
+    url = TUTORIAL_REPOSITORY + "/statements"
+    headers = {'content-type': 'application/x-turtle'}
+    
+    app.logger.debug('Assuming your data is Turtle!!')
+    app.logger.debug('Doing a POST of your data to {}'.format(url))
+    response = requests.post(url, data=data, headers=headers)
+    
+    app.logger.debug(response.status_code)
+    
+    return str(response.status_code)
     
     
 if __name__ == '__main__':

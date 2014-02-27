@@ -129,8 +129,8 @@
 				<div class='col-lg-7'>
 					<h3>Step 9 <small>Fire SPARQL DESCRIBE</small></h3>
 					<p>Start typing to copy a parsed server response to a <code>&lt;div&gt;</code> element. The click events now use the URI returned by the autocompletion to fire a SPARQL DESCRIBE query, e.g:</p>
-					<pre class='sparql'>DESCRIBE &lt;http://linkedlifedata.com/resource/umls/id/C0022885&gt;</pre>
-					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website. And fire the SPARQL query to the endpoint at <a href="http://linkedlifedata.com/sparql">http://linkedlifedata.com/sparql</a>. However, the problem is that not all SPARQL endpoints properly handle JSONP/CORS so we wrap it in a server side function <code>{{ url_for('sparql_rdf') }}</code> (that will come in handy later anyway)</p>
+					<pre class='sparql'>DESCRIBE &lt;http://linkedlifedata.com/resource/umls/id/C0000970&gt;</pre>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website. And fire the SPARQL query to the endpoint at <a href="http://linkedlifedata.com/sparql">http://linkedlifedata.com/sparql</a>. However, the problem is that not all SPARQL endpoints properly handle JSONP/CORS so we wrap it in a server side function <code>{{ url_for('sparql') }}</code></p>
 					<form role='form'>
 						<div class='form-group'>
 							<label for='messageInput9'>Write a message</label>
@@ -141,9 +141,102 @@
 				</div>
 				<div class='col-lg-5'>
 					<h3>Output</h3>
-					<div id="linktarget9" class='well' style='scroll: both; overflow: auto; height: 10em;'>This is where the server response will appear.</div>
+					<div id="linktarget9" class='well' style='scroll: both; overflow: auto; height: 15em;'>This is where the server response will appear.</div>
 				</div>
 			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 10 <small>Store results</small></h3>
+					<p>Start typing to copy a parsed server response to a <code>&lt;div&gt;</code> element. The click events now use the URI returned by the autocompletion to fire a SPARQL DESCRIBE query, e.g:</p>
+					<pre class='sparql'>DESCRIBE &lt;http://linkedlifedata.com/resource/umls/id/C0000970&gt;</pre>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website. And fire the SPARQL query to the endpoint at <a href="http://linkedlifedata.com/sparql">http://linkedlifedata.com/sparql</a>. However, the problem is that not all SPARQL endpoints properly handle JSONP/CORS so we wrap it in a server side function <code>{{ url_for('sparql') }}</code> (that will come in handy later anyway)</p>
+					<p>We also specify a link button that allows us to <em>post</em> the response to our own triple store. Again, we will wrap this call in a server side function <code>{{ url_for('store') }}</code></p>
+					<form role='form'>
+						<div class='form-group'>
+							<label for='messageInput10'>Write a message</label>
+							<input type='text' class='form-control' id='messageInput10' placeholder='Type some nifty message'>
+						</div>
+					</form>
+					
+					<div><a id="link10" class='btn btn-primary disabled'>link</a></div>
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget10" class='well' style='scroll: both; overflow: auto; height: 15em;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 11 <small>Query DBPedia</small></h3>
+					<p>Start typing to copy a parsed server response to a <code>&lt;div&gt;</code> element. The click events now use the <strong>label</strong> returned by the autocompletion to fire a SPARQL CONSTRUCT query, e.g:</p>
+					<pre class='sparql'>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+CONSTRUCT {
+	?s rdfs:label "Acetaminophen" .
+	?s ?p1 ?o1 .
+	?o1 ?p2 ?o2 .
+} WHERE {
+	?s  rdfs:label "Acetaminophen"@en; 
+	    ?p1        ?o1 .
+	?o1 ?p2        ?o2 .
+}</pre>
+					<p>We will use the <em>autocomplete</em> service of the <a href="http://linkedlifedata.com" target="_new">LinkedLifeData.com</a> website. And fire the SPARQL query to the endpoint at <a href="http://live.dbpedia.org/sparql">http://live.dbpedia.org/sparql</a>. However, the problem is that not all SPARQL endpoints properly handle JSONP/CORS so we wrap it in a server side function <code>{{ url_for('sparql') }}</code></p>
+					<p>We also specify a link button that allows us to <em>post</em> the response to our own triple store. Again, we will wrap this call in a server side function <code>{{ url_for('store') }}</code></p>
+					<p>Note that the only real difference with <strong>Step 10</strong> is the SPARQL Query!</p>
+					<form role='form'>
+						<div class='form-group'>
+							<label for='messageInput11'>Write a message</label>
+							<input type='text' class='form-control' id='messageInput11' placeholder='Type some nifty message'>
+						</div>
+					</form>
+					
+					<div><a id="link11" class='btn btn-primary disabled'>link</a></div>
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget11" class='well' style='height: 15em; scroll: both; overflow: auto;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 12 <small>Add some Schema</small></h3>
+					<p>Let's add some schema information to our repository:</p>
+					<textarea class="form-control" id="schema" class='turtle' style='width: 100%' rows='10'>
+@prefix owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+rdfs:label	rdf:type	owl:InverseFunctionalProperty .						
+</textarea>
+					<p>Click the link button to <em>POST</em> the schema to our own triple store. Again, we will wrap this call in a server side function <code>{{ url_for('store') }}</code></p>
+					<div><a id="link12" class='btn btn-primary'>link</a></div>
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget12" class='well' style='height: 15em; scroll: both; overflow: auto;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-7'>
+					<h3>Step 13 <small>Query for <code>owl:sameAs</code> relations</small></h3>
+					<p>Let's run the following query against the repository, parse the JSON results and show them in the <code>div</code> :</p>
+					<pre id='query13' class='sparql' style='width: 100%' rows='10'>
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+SELECT ?s1 ?s2 WHERE {
+  ?s1 owl:sameAs ?s2 .
+}						
+</pre>
+					<p>Click the link button to <em>GET</em> the query to our triple store. Again, we will wrap this call in a server side function <code>{{ url_for('sparql') }}</code></p>
+					<div><a id="link13" class='btn btn-primary'>link</a></div>
+				</div>
+				<div class='col-lg-5'>
+					<h3>Output</h3>
+					<div id="linktarget13" class='well' style='height: 15em; scroll: both; overflow: auto;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			
 		</div>
 		
 		<script src='{{ url_for("static", filename="js/jquery-1.11.0.min.js") }}' type='text/javascript'></script>
