@@ -7,8 +7,8 @@ import json
 app = Flask(__name__)
 
 
-TUTORIAL_REPOSITORY = 'http://localhost:8080/openrdf-sesame/repositories/tutorial'
-
+#TUTORIAL_REPOSITORY = 'http://localhost:8080/openrdf-sesame/repositories/tutorial'
+TUTORIAL_REPOSITORY = 'http://localhost:5820/tutorial'
 
 @app.route('/')
 def first_page():
@@ -44,8 +44,10 @@ def sparql():
         if return_format == 'RDF':
             sparql.setReturnFormat(RDF)
         else :
-            sparql.setReturnFormat('JSON')
-            sparql.addCustomParameter('Accept','application/sparql-results+json')
+            sparql.setReturnFormat(JSON)
+            sparql.addParameter('Accept','application/sparql-results+json')
+            
+        sparql.addParameter('reasoning','sl')
         
         app.logger.debug('Query:\n{}'.format(query))
         
@@ -80,13 +82,28 @@ def store():
     
     data = request.form['data'].encode('utf-8')
     
-    url = TUTORIAL_REPOSITORY + "/statements"
+    
+    
     headers = {'content-type': 'application/x-turtle'}
+    app.logger.debug('Assuming your data is Turtle!!')    
+
+    transaction_begin_url = TUTORIAL_REPOSITORY + "/transaction/begin"
+    app.logger.debug('Doing a POST of your data to {}'.format(transaction_begin_url))
     
-    app.logger.debug('Assuming your data is Turtle!!')
-    app.logger.debug('Doing a POST of your data to {}'.format(url))
-    response = requests.post(url, data=data, headers=headers)
+    # Start the transaction, and get a transaction_id
+    response = requests.post(transaction_begin_url)
+    transaction_id = response.content
+    app.logger.debug(response.status_code)
     
+    # POST the data to the transaction
+    post_url = TUTORIAL_REPOSITORY + "/" + transaction_id + "/add"
+    response = requests.post(post_url, data=data, headers=headers)
+    app.logger.debug(response.status_code)
+
+    
+    # Close the transaction
+    transaction_close_url = TUTORIAL_REPOSITORY + "/transaction/commit/" + transaction_id 
+    response = requests.post(transaction_close_url)
     app.logger.debug(response.status_code)
     
     return str(response.status_code)
