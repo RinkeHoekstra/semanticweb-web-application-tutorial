@@ -13,13 +13,19 @@ This tutorial shows the basics for building an Intelligent Web Application by gu
 To get this thing up and running on a local machine, you need the following:
 
 * Python 2.7
-* The `flask`, `requests` and `sparqlwrapper` packages (install using `pip install <package name>`)
-* A recent Apache Tomcat install with deployed Sesame/OWLIM Lite
-* An OWLIM-Lite repository with (at a minimum) the OWL-Horst ruleset, and the name `tutorial`. 
-	* The script assumes an adequate Sesame-style triple store is running at <http://localhost:8080/openrdf-sesame/repositories/tutorial> .
-	* If you want to use a different name or location (i.e. not running on localhost, port 8080) you need to set the `TUTORIAL_REPOSITORY` variable in `src/tutorial.py`
+* Virtualenv (`pip install virtualenv`)
+* Setup the virtualenv in the directory of this repository (`virtualenv .`)
+* Activate the virtualenv (`source bin/activate` on linux-like systems)
+* Install the necessary packages (install using `pip install -r requirements.txt`)
+* A recent Stardog installation
+	* The script assumes a Stardog database with the name 'tutorial' running at <http://localhost:5820/tutorial> (security disabled).
+	* If you want to use a different name or location (i.e. not running on localhost, port 5820) you need to set the `TUTORIAL_REPOSITORY` variable in `src/tutorial.py`
 
-Once everything is ready, start your Tomcat server, change dir into the `src` directory, and run `python tutorial.py`.
+Once everything is ready:
+
+* start your Stardog server with `stardog-admin server start --disable-security`, 
+* change dir into the `src` directory, and 
+* run `python tutorial.py`.
 
 The tutorial is then running at <http://localhost:5000> .
 
