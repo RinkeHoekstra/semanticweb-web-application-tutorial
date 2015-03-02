@@ -44,7 +44,7 @@ def sparql():
         if return_format == 'RDF':
             sparql.setReturnFormat(RDF)
         else :
-            sparql.setReturnFormat('JSON')
+            # sparql.setReturnFormat('JSON')
             sparql.addCustomParameter('Accept','application/sparql-results+json')
         
         app.logger.debug('Query:\n{}'.format(query))
