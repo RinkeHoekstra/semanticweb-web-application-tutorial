@@ -429,7 +429,7 @@ $('#link12').on('click',function(e){
 $('#link13').on('click', function(e){
 	
 	var query = $('#query13').text();
-	var endpoint = 'http://localhost:8080/openrdf-sesame/repositories/tutorial';
+	var endpoint = 'http://localhost:5820/tutorial/query';
 	var format = 'JSON';
 	
 	$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(json){
@@ -450,7 +450,7 @@ $('#link13').on('click', function(e){
 $('#link14').on('click', function(e){
 	
 	var query = $('#query14').val();
-	var endpoint = 'http://localhost:8080/openrdf-sesame/repositories/tutorial';
+	var endpoint = 'http://localhost:5820/tutorial/query';
 	var format = 'JSON';
 	
 	$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(json){
