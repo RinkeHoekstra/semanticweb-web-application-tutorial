@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>IWA Tutorial</title>
+		<title>SW2015 Tutorial</title>
 	</head>
 
 	<body>
 		<div class="container">
 			<div class='row'>
 				<div class='col-lg-12'>
-					<h1>Welcome to the IWA Tutorial Server</h1>
+					<h1>Welcome to the SW2015 Tutorial Server</h1>
 					<p>Our server is running at <code>{{ url_for('first_page', _external=True) }}</code></p>
 				</div>
 			</div>
@@ -157,7 +157,7 @@
 							<input type='text' class='form-control' id='messageInput10' placeholder='Type some nifty message'>
 						</div>
 					</form>
-					
+
 					<div><a id="link10" class='btn btn-primary disabled'>link</a></div>
 				</div>
 				<div class='col-lg-6'>
@@ -173,11 +173,11 @@
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 
 CONSTRUCT {
-	?s rdfs:label "Acetaminophen" .
+	?s rdfs:label "Aspirin" .
 	?s ?p1 ?o1 .
 	?o1 ?p2 ?o2 .
 } WHERE {
-	?s  rdfs:label "Acetaminophen"@en; 
+	?s  rdfs:label "Aspirin"@en;
 	    ?p1        ?o1 .
 	?o1 ?p2        ?o2 .
 }</pre>
@@ -190,7 +190,7 @@ CONSTRUCT {
 							<input type='text' class='form-control' id='messageInput11' placeholder='Type some nifty message'>
 						</div>
 					</form>
-					
+
 					<div><a id="link11" class='btn btn-primary disabled'>link</a></div>
 				</div>
 				<div class='col-lg-6'>
@@ -204,10 +204,12 @@ CONSTRUCT {
 					<p>Let's add some schema information to our repository:</p>
 					<textarea class="form-control" id="schema" class='turtle' style='width: 100%' rows='10'>
 @prefix owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix dbo: &lt;http://dbpedia.org/ontology/&gt; .
+@prefix umls-semnetwork: &lt;http://linkedlifedata.com/resource/semanticnetwork/id/&gt; .
 
-rdfs:label	rdf:type	owl:InverseFunctionalProperty .						
+# Let's say that the class of DBPedia 'Drug's is equivalent
+# to the 'Pharmacological Substance' class in LLD
+dbo:Drug owl:equivalentClass umls-semnetwork:T121 .
 </textarea>
 					<p>Click the link button to <em>POST</em> the schema to our own triple store. Again, we will wrap this call in a server side function <code>{{ url_for('store') }}</code></p>
 					<div><a id="link12" class='btn btn-primary'>link</a></div>
@@ -219,14 +221,15 @@ rdfs:label	rdf:type	owl:InverseFunctionalProperty .
 			</div>
 			<div class='row'>
 				<div class='col-lg-6'>
-					<h3>Step 13 <small>Query for <code>owl:sameAs</code> relations</small></h3>
+					<h3>Step 13 <small>Query for <code>rdf:type</code> relations</small></h3>
 					<p>Let's run the following query against the repository and show the results in the <code>div</code> :</p>
 					<pre id='query13' class='sparql' style='width: 100%' rows='10'>
 PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
 
-SELECT ?s1 ?s2 WHERE {
-  ?s1 owl:sameAs ?s2 .
-}						
+SELECT ?x WHERE {
+  ?x a dbo:Drug .
+}
 </pre>
 					<p>Click the link button to <em>GET</em> the query to our triple store. Again, we will wrap this call in a server side function <code>{{ url_for('sparql') }}</code></p>
 					<div><a id="link13" class='btn btn-primary'>link</a></div>
@@ -242,10 +245,11 @@ SELECT ?s1 ?s2 WHERE {
 					<p>Just because some people dislike the number 13, let's run a query against the repository, do some client-side parsing of the JSON results, and show them in the <code>div</code>:</p>
 					<textarea id='query14' class='sparql' style='width: 100%' rows='10'>
 PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
 
-SELECT ?s1 ?s2 WHERE {
-  ?s1 owl:sameAs ?s2 .
-}						
+SELECT ?x WHERE {
+  ?x a dbo:Drug .
+}
 </textarea>
 					<p>Click the link button to <em>GET</em> the query to our triple store. Again, we will wrap this call in a server side function <code>{{ url_for('sparql') }}</code></p>
 					<div><a id="link14" class='btn btn-primary'>link</a></div>
@@ -255,14 +259,12 @@ SELECT ?s1 ?s2 WHERE {
 					<div id="linktarget14" class='well' style='height: 15em; scroll: both; overflow: auto;'>This is where the server response will appear.</div>
 				</div>
 			</div>
-			
+
 		</div>
-		
+
 		<script src='{{ url_for("static", filename="js/jquery-1.11.0.min.js") }}' type='text/javascript'></script>
 		<script src='{{ url_for("static", filename="js/tutorial.js") }}' type='text/javascript'></script>
-		
-		
+
+
 	</body>
 </head>
-
-
