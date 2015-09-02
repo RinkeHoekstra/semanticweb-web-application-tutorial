@@ -62,7 +62,7 @@ def sparql():
 
             if return_format == 'RDF':
                 app.logger.debug('Serializing to Turtle format')
-                return response.serialize(format='turtle')
+                return response.serialize(format='nt')
             else :
                 app.logger.debug('Directly returning JSON format')
                 return jsonify(response)
@@ -92,12 +92,11 @@ def store():
     response = requests.post(transaction_begin_url, headers={'Accept': 'text/plain'})
     transaction_id = response.content
     app.logger.debug(response.status_code)
-    app.logger.debug(response.headers)
 
     # POST the data to the transaction
     post_url = TUTORIAL_REPOSITORY + "/" + transaction_id + "/add"
     app.logger.debug('Assuming your data is Turtle!!')
-    response = requests.post(post_url, data=data, headers={'Accept': 'text/plain', 'Content-type': 'application/x-turtle'})
+    response = requests.post(post_url, data=data, headers={'Accept': 'text/plain', 'Content-type': 'text/turtle'})
     app.logger.debug(response.status_code)
 
 
@@ -105,6 +104,8 @@ def store():
     transaction_close_url = TUTORIAL_REPOSITORY + "/transaction/commit/" + transaction_id
     response = requests.post(transaction_close_url)
     app.logger.debug(response.status_code)
+    app.logger.debug(response.content)
+    app.logger.debug(response.headers)
 
     return str(response.status_code)
 
