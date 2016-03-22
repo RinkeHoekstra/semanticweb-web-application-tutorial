@@ -1,6 +1,4 @@
 # Recommended Tools
-## <small>Knowledge Representation on the Web VU/UvA</small>
-
 
 ## 1. Introduction
 
