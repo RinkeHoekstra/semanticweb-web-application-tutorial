@@ -43,4 +43,4 @@ The tutorial is then running at <http://localhost:5000> .
 
 <sup>3</sup> You need to activate the virtual environment every time you want to start your application from a new terminal session.
 
-<sup>4</sup> The tutorial can be run against the course-provided Stardog instance (**recommended**) or a local installation of Stardog. For a step-by-step guide on installing stardog and other useful tools for the course, see ...
+<sup>4</sup> The tutorial can be run against the course-provided Stardog instance (**recommended**) or a local installation of Stardog. For a step-by-step guide on installing stardog and other useful tools for the course, see <tools.md>.
