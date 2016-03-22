@@ -12,6 +12,8 @@ This tutorial shows the basics for building a Semantic Web-based application by 
 
 The code is documented and explains each of these steps. All server-side code is in `src/tutorial.py`. The client-side code is in `src/static/js/tutorial.js`. Feel free to reuse the code in your own projects (perhaps even fork this GitHub repository, that would be cool)
 
+It also makes sense to look at the [tools document](tools.md) document for a description of the tools that you should probably have running for this course to succeeed.
+
 ### Requirements
 
 To get this thing up and running on a local machine, you need the following:<sup>1</sup>
