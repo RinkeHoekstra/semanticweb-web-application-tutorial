@@ -39,6 +39,8 @@ Once everything is ready:
 
 The tutorial is then running at <http://localhost:5000> .
 
+###### Footnotes
+
 <sup>1</sup> This assumes you're running on a linux/mac style system. For Windows use a backslash `\` instead of a forward slash `/` for directories.
 
 <sup>2</sup> The advantage of using `virtualenv` is that this creates a nicely self-contained Python environment in which you can install the packages needed for your application. This way your global environment does not get clogged, and you avoid potential incompatibilities between different Python projects.
