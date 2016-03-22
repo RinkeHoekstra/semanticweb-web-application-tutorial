@@ -77,6 +77,16 @@ The **Protégé** ontology editor
 * Download the **Pellet** reasoner from <https://github.com/Complexible/pellet/archive/master.zip> and place the `com.clarkparsia.protege.plugin.pellet.jar` file (from `pellet/protege/plugin/`) in the `plugins` directory of your **Protégé** installation.
 * Make sure that the **Pellet** reasoner can be seen in the **Reasoner** menu of the Protégé application window.
 
+
+### 3.3 A Standalone Reasoner
+Of course you can use the course-provided Stardog instance, but sometimes it is useful to be able to run a classifier against a local ontology/RDF file. We have a Pellet build [avialable on Dropbox](https://www.dropbox.com/s/sugzmjq91ggsney/pellet.tar.gz?dl=0) that you can use. Pellet is by the same developers as Stardog. See <https://github.com/Complexible/pellet> for licensing information.
+
+After downloading, unzip the file, and move the resulting directory to a location of your choice.
+
+You can run Pellet from your Terminal or Command Prompt window by running `./pellet.sh` or `pellet.bat` (on Windows). On Mac/Linux systems make sure to set the permissions to executable on this file: `chmod u+x pellet.sh`.
+
+Running `./pellet.sh help` will give you basic usage information. There's also a readme.
+
 ## 4. The KR on the Web Tutorial
 
 * Open up a Terminal or a Command Prompt window
