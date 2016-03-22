@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 
 
-#TUTORIAL_REPOSITORY = 'http://localhost:8080/openrdf-sesame/repositories/tutorial'
+# TUTORIAL_REPOSITORY = 'http://stardog.krw.d2s.labs.vu.nl/<yourgroup>'
 TUTORIAL_REPOSITORY = 'http://localhost:5820/tutorial'
 
 @app.route('/')
