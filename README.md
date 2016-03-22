@@ -12,7 +12,7 @@ This tutorial shows the basics for building a Semantic Web-based application by 
 
 The code is documented and explains each of these steps. All server-side code is in `src/tutorial.py`. The client-side code is in `src/static/js/tutorial.js`. Feel free to reuse the code in your own projects (perhaps even fork this GitHub repository, that would be cool)
 
-It also makes sense to look at the [tools document](tools.md) document for a description of the tools that you should probably have running for this course to succeeed.
+It also makes sense to look at the [tools document](tools.md) document for a description of the tools that you should probably have running for this course to succeed.
 
 ### Requirements
 
@@ -45,4 +45,4 @@ The tutorial is then running at <http://localhost:5000> .
 
 <sup>3</sup> You need to activate the virtual environment every time you want to start your application from a new terminal session.
 
-<sup>4</sup> The tutorial can be run against the course-provided Stardog instance (**recommended**) or a local installation of Stardog. For a step-by-step guide on installing stardog and other useful tools for the course, see <tools.md>.
+<sup>4</sup> The tutorial can be run against the course-provided Stardog instance (**recommended**) or a local installation of Stardog. For a step-by-step guide on installing stardog and other useful tools for the course, see the [tools document](tools.md).
