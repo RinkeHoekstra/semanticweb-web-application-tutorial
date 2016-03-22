@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, jsonify
 from SPARQLWrapper import SPARQLWrapper, RDF, JSON
 import requests
-import json
+import traceback
 
 
 app = Flask(__name__)
@@ -61,6 +61,7 @@ def sparql():
             app.logger.debug(response)
 
             if return_format == 'RDF':
+                print response
                 app.logger.debug('Serializing to Turtle format')
                 return response.serialize(format='nt')
             else :
@@ -68,7 +69,7 @@ def sparql():
                 return jsonify(response)
         except Exception as e:
             app.logger.error('Something went wrong')
-            app.logger.error(e)
+            traceback.print_exc()
             return jsonify({'result': 'Error'})
 
 

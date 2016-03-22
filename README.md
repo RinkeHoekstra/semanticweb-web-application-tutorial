@@ -10,7 +10,7 @@ This tutorial shows the basics for building a Semantic Web-based application by 
 * Posting information to your triple store
 * Using reasoning facilities of your triple store
 
-The code is documented and explains each of these steps. Feel free to reuse the code in your own projects (perhaps even fork this GitHub repository, that would be cool)
+The code is documented and explains each of these steps. All server-side code is in `src/tutorial.py`. The client-side code is in `src/static/js/tutorial.js`. Feel free to reuse the code in your own projects (perhaps even fork this GitHub repository, that would be cool)
 
 ### Requirements
 
@@ -21,7 +21,7 @@ To get this thing up and running on a local machine, you need the following:<sup
 * (**OPTIONAL**) Setup the virtualenv in the directory of this repository (`virtualenv .`)
 * (**OPTIONAL**) Activate the virtualenv (`source bin/activate` on linux-like systems) <sup>3</sup>
 * Install the necessary packages (install using `pip install -r requirements.txt`)
-* Use the course-provided Stardog endpoint for your group, by changing the `TUTORIAL_REPOSITORY` variable in `src/tutorial.py`.  
+* Use the course-provided Stardog endpoint for your group, by changing the `TUTORIAL_REPOSITORY` variable in **both** `src/tutorial.py` and `src/static/js/tutorial.js`.  
 * (**OPTIONAL**) local install:<sup>4</sup>
 	* By default, the script assumes a Stardog database with the name 'tutorial' running at <http://localhost:5820/tutorial> (security disabled).
 	* The database should have reasoning enabled, and "SameAs" reasoning should be set to "Full".
