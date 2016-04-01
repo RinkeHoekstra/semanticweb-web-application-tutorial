@@ -292,13 +292,15 @@ $('#messageInput10').on('input', function(e){
 			var a = $('<a></a>');
 			a.html(label);
 
-			a.on('click', {'uri': uri}, function(e){
-				var uri = e.data.uri;
+			console.log(uri);
+			
+			a.on('click', function(e){
 				var query = 'DESCRIBE <'+uri+'>'
 				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
 				var format = 'RDF';
 
 				$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(data){
+					console.log(data);
 					var pre = $('<pre></pre>');
 					pre.text(data);
 					$('#linktarget10').html(pre);

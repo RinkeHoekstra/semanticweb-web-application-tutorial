@@ -63,8 +63,8 @@ def sparql():
             if return_format == 'RDF':
                 print response
                 app.logger.debug('Serializing to Turtle format')
-                return response.serialize(format='nt')
-            else :
+                return response.serialize(format='turtle')
+            else:
                 app.logger.debug('Directly returning JSON format')
                 return jsonify(response)
         except Exception as e:
@@ -99,6 +99,11 @@ def store():
     app.logger.debug('Assuming your data is Turtle!!')
     response = requests.post(post_url, data=data, headers={'Accept': 'text/plain', 'Content-type': 'text/turtle'})
     app.logger.debug(response.status_code)
+    app.logger.debug(response.content)
+    app.logger.debug(response.headers)
+
+    if response.status_code != 200:
+        return str(response.content)
 
 
     # Close the transaction
@@ -108,7 +113,10 @@ def store():
     app.logger.debug(response.content)
     app.logger.debug(response.headers)
 
-    return str(response.status_code)
+    if response.status_code != 200:
+        return str(response.content)
+    else:
+        return "Ok!"
 
 
 if __name__ == '__main__':
