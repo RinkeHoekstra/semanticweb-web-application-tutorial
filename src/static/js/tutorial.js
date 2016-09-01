@@ -5,7 +5,6 @@
 // #############
 */
 
-// var TUTORIAL_REPOSITORY = 'http://stardog.krw.d2s.labs.vu.nl/<yourgroup>';
 var TUTORIAL_REPOSITORY = 'http://localhost:5820/tutorial';
 
 
@@ -187,8 +186,8 @@ $('#messageInput8').on('input', function(e){
 			var a = $('<a></a>');
 			a.html(label);
 
-			a.on('click', function(e){
-				alert('You clicked '+ uri);
+			a.on('click', {'uri': uri} function(e){
+				alert('You clicked '+ e.data.uri);
 			});
 
 			li.append(a);
@@ -234,9 +233,9 @@ $('#messageInput9').on('input', function(e){
 			var a = $('<a></a>');
 			a.html(label);
 
-			a.on('click', function(e){
-
-				var query = 'DESCRIBE <'+uri+'>'
+			a.on('click', {'uri': uri}, function(e){
+				var clicked_uri = e.data.uri;
+				var query = 'DESCRIBE <'+clicked_uri+'>'
 				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
 				var format = 'RDF';
 
@@ -293,12 +292,16 @@ $('#messageInput10').on('input', function(e){
 			a.html(label);
 
 			console.log(uri);
-			
-			a.on('click', function(e){
-				var query = 'DESCRIBE <'+uri+'>'
+
+			a.on('click', {'uri': uri}, function(e){
+				var clicked_uri = e.data.uri;
+				console.log('Clicked URI: <'+clicked_uri+'>');
+				var query = 'DESCRIBE <'+clicked_uri+'>'
 				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
 				var format = 'RDF';
 
+
+				$('#linktarget10').html("<div>Querying endpoint...</div>");
 				$.get('/sparql',data={'endpoint': endpoint, 'query': query, 'format': format}, function(data){
 					console.log(data);
 					var pre = $('<pre></pre>');
