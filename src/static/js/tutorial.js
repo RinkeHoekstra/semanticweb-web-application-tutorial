@@ -100,7 +100,7 @@ $('#messageInput3').on('input', function(e){
 
 	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
 
-	var data = {'q': message, 'limit': 100}
+	var data = {'q': message, 'limit': 100};
 
 	$.getJSON(lld_autocomplete_url, data=data, function(json){
 		var pre = $('<pre></pre>');
@@ -126,7 +126,7 @@ $('#messageInput7').on('input', function(e){
 
 	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
 
-	var data = {'q': message, 'limit': 100}
+	var data = {'q': message, 'limit': 100};
 
 	$.getJSON(lld_autocomplete_url, data=data, function(json){
 
@@ -169,7 +169,7 @@ $('#messageInput8').on('input', function(e){
 
 	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
 
-	var data = {'q': message, 'limit': 100}
+	var data = {'q': message, 'limit': 100};
 
 	$.getJSON(lld_autocomplete_url, data=data, function(json){
 
@@ -186,7 +186,7 @@ $('#messageInput8').on('input', function(e){
 			var a = $('<a></a>');
 			a.html(label);
 
-			a.on('click', {'uri': uri} function(e){
+			a.on('click', {'uri': uri}, function(e){
 				alert('You clicked '+ e.data.uri);
 			});
 
@@ -216,7 +216,7 @@ $('#messageInput9').on('input', function(e){
 
 	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
 
-	var data = {'q': message, 'limit': 100}
+	var data = {'q': message, 'limit': 100};
 
 	$.getJSON(lld_autocomplete_url, data=data, function(json){
 
@@ -235,7 +235,7 @@ $('#messageInput9').on('input', function(e){
 
 			a.on('click', {'uri': uri}, function(e){
 				var clicked_uri = e.data.uri;
-				var query = 'DESCRIBE <'+clicked_uri+'>'
+				var query = 'DESCRIBE <'+clicked_uri+'>';
 				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
 				var format = 'RDF';
 
@@ -274,7 +274,7 @@ $('#messageInput10').on('input', function(e){
 
 	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
 
-	var data = {'q': message, 'limit': 100}
+	var data = {'q': message, 'limit': 100};
 
 	$.getJSON(lld_autocomplete_url, data=data, function(json){
 
@@ -296,7 +296,7 @@ $('#messageInput10').on('input', function(e){
 			a.on('click', {'uri': uri}, function(e){
 				var clicked_uri = e.data.uri;
 				console.log('Clicked URI: <'+clicked_uri+'>');
-				var query = 'DESCRIBE <'+clicked_uri+'>'
+				var query = 'DESCRIBE <'+clicked_uri+'>';
 				var endpoint = 'http://linkedlifedata.com/sparql.rdf';
 				var format = 'RDF';
 
@@ -324,7 +324,7 @@ $('#messageInput10').on('input', function(e){
 							pre.text(data);
 							$('#linktarget10').html(pre);
 							$('#link10').toggleClass('disabled');
-						})
+						});
 
 					});
 
@@ -358,7 +358,7 @@ $('#messageInput11').on('input', function(e){
 
 	var lld_autocomplete_url = 'http://linkedlifedata.com/autocomplete.json?callback=?';
 
-	var data = {'q': message, 'limit': 100}
+	var data = {'q': message, 'limit': 100};
 
 	$.getJSON(lld_autocomplete_url, data=data, function(json){
 
@@ -402,7 +402,7 @@ $('#messageInput11').on('input', function(e){
 							pre.text(data);
 							$('#linktarget11').html(pre);
 							$('#link11').toggleClass('disabled');
-						})
+						});
 
 					});
 
@@ -431,7 +431,7 @@ $('#link12').on('click',function(e){
 		var pre = $('<pre></pre>');
 		pre.text(data);
 		$('#linktarget12').html(pre);
-	})
+	});
 
 });
 
