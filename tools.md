@@ -51,6 +51,7 @@ Depending on your preferred programming language, examples are:
 * [RDFLib](https://rdflib.readthedocs.io/en/stable/), for Python. Simply `pip install rdflib`
 * [Jena](http://jena.apache.org) for Java.
 * [EasyRDF](http://www.easyrdf.org) for PHP (but don't, oh, please)
+* [rdflib.js](https://github.com/linkeddata/rdflib.js) for JavaScript
 
 ## 3. The **Protégé** Ontology Editor -
 
