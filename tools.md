@@ -68,8 +68,9 @@ We advise you to use Protégé for the assignments in Week 3.
 ### Installing Protégé
 
 * Download the the 5.0.0 version from GitHub: <https://github.com/protegeproject/protege-distribution/releases/tag/protege-5.0.0> 
-* Download the **Pellet** reasoner from <https://github.com/Complexible/pellet/archive/master.zip> and place the `com.clarkparsia.protege.plugin.pellet.jar` file (from `pellet/protege/plugin/`) in the `plugins` directory of your **Protégé** installation.
-  * On MacOS, you should right-click (ctrl-click) `Protégé.app`, and select "Show Package Contents". You should put the Pellet jar file in the `Contents/Java/plugins` folder.
+* Install the Pellet plugin from within Protege, but if that doesn't work...
+  * Download the **Pellet** reasoner from <https://github.com/Complexible/pellet/archive/master.zip> and place the `com.clarkparsia.protege.plugin.pellet.jar` file (from `pellet/protege/plugin/`) in the `plugins` directory of your **Protégé** installation.
+    * On MacOS, you should right-click (ctrl-click) `Protégé.app`, and select "Show Package Contents". You should put the Pellet jar file in the `Contents/Java/plugins` folder.
 * To run it:
   * The Windows installer should produce an icon for you, otherwise you will need to run the `run.bat` (or similar) script in the Protégé directory.
   * On Linux, you should run the `run.sh` script in the Protégé directory
@@ -144,14 +145,17 @@ Once you have Python, Java and Stardog in place, you can try out the Semantic We
 * Install the necessary packages (`pip install -r requirements.txt`)
 * Check the Stardog SPARQL endpoint URL in the `TUTORIAL_REPOSITORY` variable in **both** `src/tutorial.py` and `src/static/js/tutorial.js`.  
 * If you haven't done so, install **Stardog** and make sure it is running.
-	* By default, the script assumes a Stardog database with the name 'tutorial' running at <http://localhost:5820/tutorial>.
-  * The database should have reasoning set to `SL` and "SameAs reasoning" to `FULL`.
+  * By default, the script assumes a Stardog database with the name 'tutorial' running at <http://localhost:5820/tutorial>.
+  * The database should have `reasoning set to `SL` and "SameAs reasoning" to `FULL`.
 	* Start your Stardog server with `stardog-admin server start --disable-security` (don't forget the `--disable-security` flag!). To stop Stardog, run `stardog-admin server stop`.
 	* If you want to use a different name or location (i.e. not running on localhost, port 5820) you need to set the `TUTORIAL_REPOSITORY` variable in `src/tutorial.py`, and make appropriate modifications to the Stardog configuration.
+* Run the tutorial from within the `src` directory by running `python tutorial.py`
 
 Other information on how to run the tutorial can be found in the readme file on the GitHub page of the tutorial: <https://github.com/RinkeHoekstra/semantic-web-application-tutorial>.
 
 #### The Ultimate Test: does it work?
+
+
 
 * In step 10,
   * type `Aspirin`, (this retrieves all matches for Aspirin from Linked Life Data)
