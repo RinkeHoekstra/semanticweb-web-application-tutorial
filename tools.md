@@ -68,7 +68,7 @@ We advise you to use Protégé for the assignments in Week 3.
 
 * Download the the 5.0.0 version from GitHub: <https://github.com/protegeproject/protege-distribution/releases/tag/protege-5.0.0> 
 * Download the **Pellet** reasoner from <https://github.com/Complexible/pellet/archive/master.zip> and place the `com.clarkparsia.protege.plugin.pellet.jar` file (from `pellet/protege/plugin/`) in the `plugins` directory of your **Protégé** installation.
-  * On MacOS, you should right-click (ctrl-click) `Protégé.app`, and select "Show Package Contents". You should put the Pellet jar file in the 'Contents/Java/plugins` folder.
+  * On MacOS, you should right-click (ctrl-click) `Protégé.app`, and select "Show Package Contents". You should put the Pellet jar file in the `Contents/Java/plugins` folder.
 * To run it:
   * The Windows installer should produce an icon for you, otherwise you will need to run the `run.bat` (or similar) script in the Protégé directory.
   * On Linux, you should run the `run.sh` script in the Protégé directory
