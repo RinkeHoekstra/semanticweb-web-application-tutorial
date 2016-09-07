@@ -7,6 +7,7 @@ This handout is meant as a guide for installing some of the tools that we will u
 ##### Warnings
 * If you copy & paste from this document, make sure that the pasted text is exactly the same as the copied one (sometimes quote marks are changed)
 * The only exception is when you see the text `YOURUSERNAME`: be sure to replace it with your actual user name!
+* If you change any settings in Windows, you need to restart your command prompt (CMD) for the changes to take effect
 
 
 ## 2. Important Stuff
@@ -16,30 +17,27 @@ A good **programming editor**, such as [Atom](http://atom.io), [Sublime](http://
 ### 2.2 Java
 Make sure that you have Java, and your Java version is up to date.
 
-Check your version of Java by running `java -version` in a Terminal or Command Prompt window.
-
-If you have Java 1.7 or higher, then you are probably fine. **Only install a new version of Java if it is really necessary**.
-
-Stardog requires Java 1.7 64bit at a minimum (1.8 preferred). Stardog does not run on 32bit systems. It is also safest to install the JDK rather than a JRE.
-
-* Windows and Mac users should download Java from: <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
-* Linux users should use the package manager of their system (e.g. `sudo apt-get install openjdk-8-jdk` on debian-style systems)
-
-If Stardog (see below) complains about a missing JVM library, first try to install the JDK:
+Install JDK version 8u101 for your platform from:
 
 <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
 
-Otherwise install the Server JVM for your platform from:
+Running `java -version` in your terminal/command prompt should give:
 
-<http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html>
+```
+java version "1.8.0_101"
+Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
+```
 
 ### 2.3 Python
 A working version of **Python**, preferably somewhat close to 2.7.12 (but not 2.6 or 3.x) for your platform of choice.
 
 * Check what version you have by running `python --version` in a terminal (or command prompt) window
 
-If needed:
+**NB:** if you are an Anaconda user, and you're happy with it (are you?), you should replace all occurrences of `pip` below with the corresponding `conda` command. 
 
+If needed:
+* Conda users can install Python 2.7 by running `conda install python=2.7` in the Terminal.
 * Windows users can go to <https://www.python.org> to download it.  
   **NB**: make sure to enable the 'Add Python.exe to path' option during installation.
 * Linux users should use the package manager of their system (e.g. `sudo apt-get install python`)
@@ -50,6 +48,7 @@ If needed:
   - Run `brew install python`
 
 ### 2.4 Programming Libraries
+(For the lab session you may want to skip to section 3)
 
 It is not usually a good idea to create and manipulate machine-interpretable files by hand. A good programming library for Linked Data is a real benefit.
 
@@ -132,6 +131,12 @@ export PATH=$PATH:/Users/YOURUSERNAME/Documents/stardog-4.1.3/bin
 * Whee!
 
 Follow the next steps under **4.3**
+
+#### 4.3 Starting and Stopping Stardog
+
+To start: ``stardog-admin server start --disable-security`` (`stardog-admin.bat` on Windows)
+
+To stop: ``stardog-admin server stop`` (`stardog-admin.bat` on Windows)
 
 #### 4.3 All Platforms
 * Go to <http://localhost:5820>, create a new Database called `tutorial` (you may need to login using *admin*/*admin*)
