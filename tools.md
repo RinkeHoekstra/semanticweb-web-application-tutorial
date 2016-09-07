@@ -52,6 +52,7 @@ Depending on your preferred programming language, examples are:
 * [Jena](http://jena.apache.org) for Java.
 * [EasyRDF](http://www.easyrdf.org) for PHP (but don't, oh, please)
 * [rdflib.js](https://github.com/linkeddata/rdflib.js) for JavaScript
+* [Redland](http://librdf.org) for C
 
 ## 3. The **Protégé** Ontology Editor -
 
