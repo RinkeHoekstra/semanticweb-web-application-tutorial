@@ -91,12 +91,12 @@ Official installation instructions can be found at <http://docs.stardog.com/#_qu
 #### 4.1 Windows
 One way to get it running:
 
-* Move or copy the unzipped directory `stardog-4.1.2` to your `Documents` folder. You now have a directory called `C:\Users\YOURUSERNAME\Documents\stardog-4.1.2` (where YOURUSERNAME is your actual user name!)
-* Create a `data` directory inside it, this is now `C:\Users\YOURUSERNAME\Documents\stardog-4.1.2\data`
-* Copy the `stardog-license.bin` file to `C:\Users\YOURUSERNAME\Documents\stardog-4.1.2\data`
+* Move or copy the unzipped directory `stardog-4.1.3` to your `Documents` folder. You now have a directory called `C:\Users\YOURUSERNAME\Documents\stardog-4.1.3` (where YOURUSERNAME is your actual user name!)
+* Create a `data` directory inside it, this is now `C:\Users\YOURUSERNAME\Documents\stardog-4.1.3\data`
+* Copy the `stardog-license.bin` file to `C:\Users\YOURUSERNAME\Documents\stardog-4.1.3\data`
 * Go to the Control Panel, and search for `environment variables`.
-	* Create a system-wide variable called `STARDOG_HOME` and give it the value `C:\Users\YOURUSERNAME\Documents\stardog-4.1.2\data`.
-	* Update the system-wide `PATH` variable by adding `C:\Users\YOURUSERNAME\Documents\stardog-4.1.2\bin`
+	* Create a system-wide variable called `STARDOG_HOME` and give it the value `C:\Users\YOURUSERNAME\Documents\stardog-4.1.3\data`.
+	* Update the system-wide `PATH` variable by adding `C:\Users\YOURUSERNAME\Documents\stardog-4.1.3\bin`
 * Start the Command Prompt, and type `stardog-admin.bat server start --disable-security` to start Stardog (you need to do this every time you have rebooted your system. If you want to manually stop the service, type `stardog-admin.bat server stop`)
 * Open your browser, and go to <http://localhost:5820> the login details are `admin` and `admin`
 * Whee!
@@ -108,15 +108,15 @@ Alternative installation instructions can be found at <http://docs.stardog.com/#
 #### 4.2 Linux/Mac
 One way to get it running:
 
-* Move or copy the unzipped directory `stardog-4.1.2` to your `Documents` folder. You now have a directory called `/Users/YOURUSERNAME/Documents/stardog-4.1.2`
-* Create a `data` directory inside it, this is now `/Users/YOURUSERNAME/Documents/stardog-4.1.2/data`
-* Copy the `stardog-license.bin` to `/Users/YOURUSERNAME/Documents/stardog-4.1.2/data`
+* Move or copy the unzipped directory `stardog-4.1.3` to your `Documents` folder. You now have a directory called `/Users/YOURUSERNAME/Documents/stardog-4.1.3`
+* Create a `data` directory inside it, this is now `/Users/YOURUSERNAME/Documents/stardog-4.1.3/data`
+* Copy the `stardog-license.bin` to `/Users/YOURUSERNAME/Documents/stardog-4.1.3/data`
 * Open up a Terminal window, and type `open ~/.bash_profile`, this opens a TextEdit window on mac. Linux users will know what to do.
 * Add the following lines anywhere in the file:
 
 ```
-export STARDOG_HOME=/Users/YOURUSERNAME/Documents/stardog-4.1.2/data
-export PATH=$PATH:/Users/YOURUSERNAME/Documents/stardog-4.1.2/bin
+export STARDOG_HOME=/Users/YOURUSERNAME/Documents/stardog-4.1.3/data
+export PATH=$PATH:/Users/YOURUSERNAME/Documents/stardog-4.1.3/bin
 ```
 * Close the Terminal window, and open a new one
 * Run the Stardog server via `stardog-admin server start --disable-security` (you need to do this every time you have rebooted your system. If you want to manually stop the service, type `stardog-admin server stop`)
