@@ -260,3 +260,8 @@ After downloading, unzip the file, and move the resulting directory to a locatio
 You can run Pellet from your Terminal or Command Prompt window by running `./pellet.sh` or `pellet.bat` (on Windows). On Mac/Linux systems make sure to set the permissions to executable on this file: `chmod u+x pellet.sh`.
 
 Running `./pellet.sh help` will give you basic usage information. There's also a readme.
+
+### 6.8 Linked Data Reactor (LD-R) Framework
+[LD-R](http://ld-r.org) is a framework for building reactive component-based Linked Data Applications.
+LD-R utilizes Facebook's ReactJS components, Flux architecture and Yahoo!'s Fluxible framework for implementing isomorphic Semantic Web applications.
+Follow [this quick tutorial](http://ld-r.org/docs/basicTutorial.html) to install and use LD-R.
