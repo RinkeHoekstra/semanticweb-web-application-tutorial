@@ -22,11 +22,16 @@ If you have Java 1.7 or higher, then you are probably fine. **Only install a new
 
 Stardog requires Java 1.7 64bit at a minimum (1.8 preferred). Stardog does not run on 32bit systems. It is also safest to install the JDK rather than a JRE.
 
-* Windows users should download Java from: <http://java.com>
+* Windows and Mac users should download Java from: <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
 * Linux users should use the package manager of their system (e.g. `sudo apt-get install openjdk-8-jdk` on debian-style systems)
-* MacOS prior to Lion comes shipped with a sufficiently recent java version, otherwise download a JDK from <http://java.com>
 
-If Stardog (see below) complains about a missing JVM library, install the Server JVM for your platform from <http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html>
+If Stardog (see below) complains about a missing JVM library, first try to install the JDK:
+
+<http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
+
+Otherwise install the Server JVM for your platform from:
+
+<http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html>
 
 ### 2.3 Python
 A working version of **Python**, preferably somewhat close to 2.7.12 (but not 2.6 or 3.x) for your platform of choice.
