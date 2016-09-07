@@ -68,12 +68,13 @@ We advise you to use Protégé for the assignments in Week 3.
 
 * Download the latest version of the editor from <http://protege.stanford.edu> and install it  
 (by registering you will help them get funding to continue support).
-* If you experience a slow download, get the "platform independent" version from <https://www.dropbox.com/s/eiyy6qwnd1zwv4h/Protege-5.0.0-beta-17.zip?dl=0>
+* If you experience a slow download, get the "platform independent" version from <https://surfdrive.surf.nl/files/index.php/s/YysR7pAcNxyL74h>
 * To run it:
   * The Windows installer should produce an icon for you, otherwise you will need to run the `run.bat` (or similar) script in the Protégé directory.
   * On Linux, you should run the `run.sh` script in the Protégé directory
-  * On MacOS, you should run the `run.command` script in the Protégé directory
+  * On MacOS, you should run the `Protégé.app` application in the Protégé directory
 * Download the **Pellet** reasoner from <https://github.com/Complexible/pellet/archive/master.zip> and place the `com.clarkparsia.protege.plugin.pellet.jar` file (from `pellet/protege/plugin/`) in the `plugins` directory of your **Protégé** installation.
+  * On MacOS, you should right-click (ctrl-click) `Protégé.app`, and select "Show Package Contents". You should put the Pellet jar file in the 'Contents/Java/plugins` folder.
 * Make sure that the **Pellet** reasoner can be seen in the **Reasoner** menu of the Protégé application window.
 
 
