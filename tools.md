@@ -162,7 +162,7 @@ Other information on how to run the tutorial can be found in the readme file on 
 
 #### The Ultimate Test: does it work?
 
-
+Go to <http://localhost:5000> in your browser.
 
 * In step 10,
   * type `Aspirin`, (this retrieves all matches for Aspirin from Linked Life Data)
