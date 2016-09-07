@@ -54,7 +54,7 @@ Depending on your preferred programming language, examples are:
 * [rdflib.js](https://github.com/linkeddata/rdflib.js) for JavaScript
 * [Redland](http://librdf.org) for C
 
-## 3. The **Protégé** Ontology Editor -
+## 3. The **Protégé** Ontology Editor
 
 There are several RDF and OWL editors that you could use (apart from your favourite text-based editor). The main contenders are [Protégé](http://protege.stanford.edu) and [TopBraid Composer](http://www.topquadrant.com/downloads/topbraid-composer-install/).
 
