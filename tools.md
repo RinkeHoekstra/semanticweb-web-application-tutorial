@@ -149,7 +149,7 @@ Once you have Python, Java and Stardog in place, you can try out the Semantic We
 
 * Open up a Terminal or a Command Prompt window
 * Change directory to e.g. your Documents directory (on Mac/Linux: `cd ~/Documents`, on Windows `cd C:\Users\YOURUSERNAME\Documents`)
-* If you have GIT, you can "clone" the source code from Github. Type: `git clone https://github.com/RinkeHoekstra/semantic-web-application-tutorial.git web-application` to clone it into a folder called `web-application`
+* If you have GIT, you can "clone" the source code from Github. Type: `git clone https://github.com/RinkeHoekstra/semanticweb-web-application-tutorial.git web-application` to clone it into a folder called `web-application`
 * Otherwise, download the zip file from <https://github.com/RinkeHoekstra/semanticweb-web-application-tutorial/archive/master.zip> and unzip to a folder called `web-application`
 * Change directory to the newly created folder: `cd web-application`
 * (**OPTIONAL**) Setup the virtualenv in the directory of this repository (`virtualenv .`)
